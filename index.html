@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Font-awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <title>SneakerHoops</title>
     <script defer src="index.js"></script>
 </head>
@@ -14,8 +19,8 @@
     <header class="header">
         <div class="container container--header">
             <nav class="nav">
-                <img src="img/logo.png" alt="SneakerHoops Logo">
-                <h1>SneakerHoops</h1>
+                <img src="img/logo.png" alt="SneakerHoops Logo" class="logo nav__logo">
+                <h1 class="header__title">SneakerHoops</h1>
                 <ul class="nav__links">
                     <li class="nav__item">
                         <a href="#section--1" class="nav__link">Feautes</a>
@@ -30,11 +35,18 @@
                         <button class="btn nav__open-account btn--show-modal">Open Account</button>
                     </li>
                 </ul>
+                <!-- Mobile -->
+                <button class="btn btn-mobile btn-mobile--open btn-mobile--active">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <button class="btn btn-mobile btn-mobile--close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </nav>
             <div class="banner">
-                <h2 class="banner__title">Fly Beyond Limits</h2>
+                <h2 class="banner__title">Fly <span class="highlight">Beyond</span> Limits</h2>
                 <p class="banner__text">Basketball has never been enjoyable that much.</p>
-                <a href="#section--1" class="link--scroll-to">Explore &DownArrow;</a>
+                <a href="#section--1" class="banner__link--scroll-to">Explore &DownArrow;</a>
                 <img src="img/banner.jpg" alt="Banner Photo" class="banner__img">
             </div>
         </div>
@@ -49,7 +61,7 @@
             </div>
             <div class="features section__body">
                 <div class="feature">
-                    <img src="" alt="" class="feature__img">
+                    <img src="img/premium-material.jpg" alt="Premium Material" class="feature__img">
                     <div class="feautere__detail">
                         <i class="feature__icon fa-solid fa-fire"></i>
                         <h4 class="feature__title">Premium Materials</h4>
@@ -60,12 +72,12 @@
                     <div class="feautere__detail">
                         <i class="feature__icon fa-solid fa-battery-full"></i>
                         <h4 class="feature__title">Quality Assurance</h4>
-                        <p class="feature__text">Your paragraph effectively communicates a strong commitment to quality and customer satisfaction. It assures customers of not only impeccable quality and thorough inspections but also reliable performance during their games. The emphasis on rigorous testing reinforces the idea that each pair is designed to meet high standards, providing customers with a trustworthy companion on the basketball court. Overall, the paragraph is clear, concise, and persuasive.</p>
+                        <p class="feature__text">Your paragraph effectively communicates a strong commitment to quality and customer satisfaction. It assures customers of not only impeccable quality and thorough inspections but also reliable performance during their games. The emphasis on rigorous testing reinforces the idea that each pair is designed to meet high standards, providing customers with a trustworthy companion on the basketball court.</p>
                     </div>
-                    <img src="" alt="" class="feature__img">
+                    <img src="img/quality-assurance.jpg" alt="Quality Assurance" class="feature__img">
                 </div>
                 <div class="feature">
-                    <img src="" alt="" class="feature__img">
+                    <img src="img/fast-shipping.jpg" alt="Fast Shipping" class="feature__img">
                     <div class="feautere__detail">
                         <i class="feature__icon fa-solid fa-truck-fast"></i>
                         <h4 class="feature__title">Fast Shipping</h4>
@@ -432,7 +444,7 @@
                 <a href="" class="footer__link">Contact Us</a>
             </li>
         </ul>
-        <img src="img/logo.png" alt="SneakerHoops Logo">
+        <img src="img/logo.png" alt="SneakerHoops Logo" class="logo footer__logo">
     </footer>
 
     <!-- Modal -->
