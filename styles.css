@@ -2,18 +2,18 @@
     --color-primary: #eb1010;
     --color-primary-darker: #d50d0d;
     --color-primary-opacity: #ff1717d2;
-    --color-secondary: #424bfa;
+    --color-secondary: #5961fd;
     --color-secondary-darker: #1c23a9;
     --color-secondary-opacity: #1c23a993;
     --color-tertiary: #37cb43;
     --color-tertiary-darker: #34a73d;
-    --color-tertiary-opacity: #37cb43de;
+    --color-tertiary-opacity: #37cb43c0;
     --color-white: #fff;
     --color-light: #f3f3f3;
     --color-medium: #949393;
     --color-dark: #1b1b1b;
     --color-black: #000;
-    --gradient--primary: linear-gradient(to top right, #eb1010, #eb101099)
+    --gradient--primary: linear-gradient(to top right, #eb1010, #eb101099);
 }
 
 /* GENERAL */
@@ -283,7 +283,7 @@ button {
 
 .brands__contents {
     margin-top: -25px;
-    padding: 4em;
+    padding: 4em 2em;
     background-color: var(--color-white);
 }
 
@@ -308,9 +308,131 @@ button {
     text-align: justify;
 }
 
+/* SHOWCASE */
+.showcase {
+    position: relative;
+}
+
+.slider {
+    position: relative;
+    overflow: hidden;
+    height: 63rem;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: transform .6s;
+}
+
+.sneaker {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .75em;
+    background-color: var(--color-white);
+    color: var(--color-dark);
+    padding: 1em;
+    border-radius: .75em;
+    height: 100%;
+}
+
+.sneaker__img {
+    border-radius: .75em;
+}
+
+.sneaker__header img {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    padding: .25em;
+    position: absolute;
+    top: 5%;
+    right: 7.5%;
+}
+
+.sneaker__title {
+    font-size: 2rem;
+}
+
+.sneaker__price {
+    position: absolute;
+    top: 5%;
+    left: 7.5%;
+    font-size: 1.4rem;
+    width: 8rem;
+    background-color: var(--color-secondary-opacity);
+    color: var(--color-white);
+    border-radius: 2em;
+    padding: .3em;
+    text-align: center;
+}
+
+.sneaker__footer {
+    margin-top: auto;
+}
+
+.sneaker__btn {
+    font-size: 1.8rem;
+    width: 100%;
+    background: var(--gradient--primary);
+    color: var(--color-white);
+    padding: .5em 0;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    font-size: 2rem;
+    width: 5rem;
+    height: 5rem;
+    background-color: var(--color-medium);
+    opacity: .5;
+    border-radius: 50%;
+    font-weight: 700;
+}
+
+.slider-btn--left {
+    left: 0;
+}
+
+.slider-btn--right {
+    right: 0;
+}
+
+.dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+    padding: .75em 0;
+}
+
+.btn--dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: var(--color-medium);
+    opacity: .5;
+}
+
+.btn--dot.active {
+    background-color: var(--color-primary);
+    opacity: .8;
+}
 
 /* MEDIA QUERIES */
 @media(min-width: 576px) {
+    /* BRANDS */
     .brands__tabs {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -361,6 +483,24 @@ button {
         align-items: center;
         gap: 1.5em;
         margin-left: auto;
+    }
+
+    /* SHOWCASE */
+    .slide {
+        width: calc(100% / 3);
+        height: 55rem;
+    }
+
+    .slide-displayed::after{
+        display: block;
+        content: "";
+        margin-right: .5rem;
+    }
+
+    .slide-displayed::before{
+        display: block;
+        content: "";
+        margin-left: .5rem;
     }
 }
 
@@ -418,6 +558,11 @@ button {
 
     .feature:nth-child(odd) img {
         order: unset;
+    }
+    
+    /* SHOWCASE */
+    .slide {
+        height: 58rem;
     }
 }
 
