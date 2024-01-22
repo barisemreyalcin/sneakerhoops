@@ -3,12 +3,16 @@
 // VARIABLES
 const navLinks = document.querySelector(".nav__links");
 const navLink = document.querySelectorAll(".nav__link");
+const btnOpenModal = document.querySelectorAll(".btn--show-modal");
+const btnCloseModal = document.querySelector(".modal__btn--close");
 const btnMobileOpen = document.querySelector(".btn-mobile--open");
 const btnMobileClose = document.querySelector(".btn-mobile--close");
 const btnLeft = document.querySelector(".slider-btn--left");
 const btnRight = document.querySelector(".slider-btn--right");
 const slides = document.querySelectorAll(".slide");
 const dotContainer = document.querySelector(".dots");
+const modalContainer = document.querySelector(".container--modal");
+const modalOverlay = document.querySelector(".overlay");
 let isMobileWidth = window.matchMedia("(max-width: 768px)").matches;
 
 let curSlideIndex = 0;
@@ -16,27 +20,28 @@ const lastSlideIndex = slides.length - 1;
 
 // FUNCTIONS
 // Mobile Navbar
-const toggleNav = function() {
-    if(btnMobileOpen.classList.contains("btn-mobile--active")) {
-        btnMobileOpen.classList.remove("btn-mobile--active");
-        btnMobileClose.classList.add("btn-mobile--active");
-        btnMobileClose.style.position = "fixed";
-        navLinks.classList.add(("nav__links--mobile"));
-    } else {
-        btnMobileOpen.classList.add("btn-mobile--active");
-        btnMobileClose.classList.remove("btn-mobile--active");
-        navLinks.classList.remove(("nav__links--mobile"));
+const navController = function() {
+    const toggleNav = function() {
+        if(btnMobileOpen.classList.contains("btn-mobile--active")) {
+            btnMobileOpen.classList.remove("btn-mobile--active");
+            btnMobileClose.classList.add("btn-mobile--active");
+            btnMobileClose.style.position = "fixed";
+            navLinks.classList.add(("nav__links--mobile"));
+        } else {
+            btnMobileOpen.classList.add("btn-mobile--active");
+            btnMobileClose.classList.remove("btn-mobile--active");
+            navLinks.classList.remove(("nav__links--mobile"));
+        }
     }
-}
-
-navLink.forEach(link => {
-    link.addEventListener("click", function () {
-        toggleNav();
+    
+    navLink.forEach(link => {
+        link.addEventListener("click", function () { toggleNav(); });
     });
-});
-
-btnMobileOpen.addEventListener("click", toggleNav);
-btnMobileClose.addEventListener("click", toggleNav);
+    
+    btnMobileOpen.addEventListener("click", toggleNav);
+    btnMobileClose.addEventListener("click", toggleNav);
+}
+navController();
 
 // Slider
 const slider = function() {
@@ -125,3 +130,32 @@ const slider = function() {
     });
 }
 slider();
+
+// Modal
+const modalController = function() {
+    // Open Modal
+    const openModal = function() {
+        modalContainer.classList.remove("hidden");
+        modalOverlay.classList.remove("hidden");
+    }
+
+    // Close Modal
+    const closeModal = function() {
+        modalContainer.classList.add("hidden");
+        modalOverlay.classList.add("hidden"); 
+    }
+
+    btnOpenModal.forEach(btn => btn.addEventListener("click", openModal));
+    btnCloseModal.addEventListener("click", closeModal);
+
+    // Close modal by clicking overlay
+    modalOverlay.addEventListener("click", closeModal);
+
+    // Close modal by pressing ESC
+    document.addEventListener("keydown", function(e) {
+        if(e.key === "Escape" && !modalOverlay.classList.contains("hidden")) {
+            closeModal();
+        }
+    })
+}
+modalController();
