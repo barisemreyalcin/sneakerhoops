@@ -430,6 +430,40 @@ button {
     opacity: .8;
 }
 
+/* SIGN-UP */
+.section--sign-up {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+
+.container--sign-up {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+.sign-up-title {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.btn--sign-up {
+    font-size: 2rem;
+    background-color: var(--color-primary-opacity);
+    color: var(--color-light);
+    padding: 1em 3em;
+    border-radius: 1.75em;
+    transition: background-color .6s;
+}
+
+.btn--sign-up:hover {
+    background-color: var(--color-primary);
+}
+
 /* MEDIA QUERIES */
 @media(min-width: 576px) {
     /* BRANDS */
