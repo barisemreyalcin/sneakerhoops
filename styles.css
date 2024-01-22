@@ -60,7 +60,7 @@ button {
     margin: 0 auto;
 }
 
-.section {
+.section, footer {
     border-top: 1px dashed var(--color-medium);
     padding: 6em 0;
 }
@@ -382,9 +382,14 @@ button {
 .sneaker__btn {
     font-size: 1.8rem;
     width: 100%;
-    background: var(--gradient--primary);
+    background-image: var(--gradient--primary);
     color: var(--color-white);
     padding: .5em 0;
+    transition: transform .4s;
+}
+
+.sneaker__btn:hover {
+    transform: scaleY(1.08);
 }
 
 .slider-btn {
@@ -464,6 +469,44 @@ button {
     background-color: var(--color-primary);
 }
 
+/* FOOTER */
+.footer {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+
+.container--footer,
+.footer__nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer__nav {
+    gap: .75em;
+}
+
+.footer__item {
+    display: block;
+}
+
+.footer__link {
+    color: inherit;
+    font-size: 1.7rem;
+}
+
+.footer__logo {
+    width: 4.5rem;
+}
+
+.footer__copyright {
+    font-size: 1.4rem;
+}
+
+.container--footer {
+    gap: 2em;
+}
+
 /* MEDIA QUERIES */
 @media(min-width: 576px) {
     /* BRANDS */
@@ -471,6 +514,14 @@ button {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: .5em;
+    }
+
+    /* FOOTER */
+    .footer__nav {
+        flex-direction: row;
+        justify-content: center;
+        gap: 2em;
+        width: 100%;
     }
 }
 
