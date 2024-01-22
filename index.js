@@ -3,6 +3,8 @@
 // VARIABLES
 const navLinks = document.querySelector(".nav__links");
 const navLink = document.querySelectorAll(".nav__link");
+const navLogo = document.querySelector(".nav__logo");
+const navTitle = document.querySelector(".header__title");
 const btnOpenModal = document.querySelectorAll(".btn--show-modal");
 const btnCloseModal = document.querySelector(".modal__btn--close");
 const btnMobileOpen = document.querySelector(".btn-mobile--open");
@@ -42,6 +44,27 @@ const navController = function() {
     btnMobileClose.addEventListener("click", toggleNav);
 }
 navController();
+
+// Hover Navbar
+const hoverController = function() {
+    const handleHover = function(e) {
+        if(e.target.classList.contains("fade")) {
+            const navLink = e.target;
+            const siblingNavLinks = navLink.closest(".nav__links").querySelectorAll(".fade");
+            
+            siblingNavLinks.forEach(sibling => {
+                sibling !== navLink && (sibling.style.opacity = this);
+            })
+    
+            navLogo.style.opacity = this;
+            navTitle.style.opacity = this;
+        }
+    }
+    
+    navLinks.addEventListener("mouseover", handleHover.bind(.4));
+    navLinks.addEventListener("mouseout", handleHover.bind(1));
+}
+hoverController();
 
 // Slider
 const slider = function() {

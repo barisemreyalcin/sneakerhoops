@@ -89,6 +89,9 @@ button {
     padding: 1.2em 0;
 }
 
+.nav .fade {
+    transition: all .3s;
+}
 
 .nav__link:link,
 .nav__link:visited {
@@ -345,6 +348,11 @@ button {
 
 .sneaker__img {
     border-radius: .75em;
+    transition: transform .6s;
+}
+
+.sneaker__img:hover {
+    transform: scale(1.03);
 }
 
 .sneaker__header img {
