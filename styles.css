@@ -264,7 +264,7 @@ button {
     color: var(--color-white);
     border-radius: 2em;
     padding: .75em;
-    transition: opacity .6s;
+    transition: opacity .6s, transform .5s;
 }
 
 .brands__tab:hover {

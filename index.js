@@ -16,6 +16,9 @@ const btnRight = document.querySelector(".slider-btn--right");
 const slides = document.querySelectorAll(".slide");
 const dotContainer = document.querySelector(".dots");
 const modalContainer = document.querySelector(".container--modal");
+const brandsTabs = document.querySelectorAll(".brands__tab");
+const brandsTabsContainer = document.querySelector(".brands__tabs");
+const brandsContents = document.querySelectorAll(".brands__content");
 const modalOverlay = document.querySelector(".overlay");
 const headerHeight = header.getBoundingClientRect().height;
 let isMobileWidth = window.matchMedia("(max-width: 768px)").matches;
@@ -210,3 +213,25 @@ const modalController = function() {
     })
 }
 modalController();
+
+// Switch Brand Tabs
+const tabController = function() {
+    brandsTabsContainer.addEventListener("click", function(e) {
+        const clickedTab = e.target.closest(".brands__tab"); // to avoid clicking child elements of brands__tab
+    
+        if(!clickedTab) return; // Guard clause
+    
+        // Remove active tab and content
+        brandsTabs.forEach(tab => tab.classList.remove("brands__tab--active"));
+        brandsContents.forEach(content => content.classList.remove("brands__content--active"));
+    
+        // Set active tab
+        clickedTab.classList.add("brands__tab--active");
+    
+        // Set active content
+        const dataNum = clickedTab.dataset.tab;
+        console.log(dataNum);
+        document.querySelector(`.brands__content--${dataNum}`).classList.add("brands__content--active");
+    })
+}
+tabController();
