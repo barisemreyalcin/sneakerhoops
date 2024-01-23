@@ -581,7 +581,7 @@ button {
     position: absolute;
     top: .75em;
     right: .75em;
-    z-index: 5;
+    z-index: 6;
     font-size: 1.8rem;
 }
 
@@ -693,7 +693,19 @@ button {
         font-size: 10px;
     }
 
+    .body--desktop {
+        padding-top: var(--header-height);
+    }
+
     /* HEADER */
+    .header--sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 5;
+        background-color: rgba(255, 255, 255, .9);
+    }
+
     .nav__links {
         display: flex;
         align-items: center;

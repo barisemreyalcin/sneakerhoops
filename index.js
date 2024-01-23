@@ -1,6 +1,8 @@
 "use strict";
 
 // VARIABLES
+const header = document.querySelector(".header");
+const banner = document.querySelector(".section--banner");
 const navLinks = document.querySelector(".nav__links");
 const navLink = document.querySelectorAll(".nav__link");
 const navLogo = document.querySelector(".nav__logo");
@@ -15,6 +17,7 @@ const slides = document.querySelectorAll(".slide");
 const dotContainer = document.querySelector(".dots");
 const modalContainer = document.querySelector(".container--modal");
 const modalOverlay = document.querySelector(".overlay");
+const headerHeight = header.getBoundingClientRect().height;
 let isMobileWidth = window.matchMedia("(max-width: 768px)").matches;
 
 let curSlideIndex = 0;
@@ -66,8 +69,33 @@ const hoverController = function() {
 }
 hoverController();
 
+// Sticky Nav
+const stickyController = function() {
+    const handleSticky = function(entries) {
+        const [entry] = entries;
+    
+        if(!entry.isIntersecting) {
+            header.classList.add("header--sticky");
+            document.documentElement.style.setProperty("--header-height", `${headerHeight}px`);
+        }
+        else {
+            header.classList.remove("header--sticky");
+            document.documentElement.style.setProperty("--header-height", "0");
+        }
+    }
+    
+    const bannerObserber = new IntersectionObserver(handleSticky, {
+        root: null,
+        threshold: 0,
+        rootMargin: `${-headerHeight}px`
+    })
+    
+    bannerObserber.observe(banner);
+}
+stickyController();
+
 // Slider
-const slider = function() {
+const sliderController = function() {
     // Create Slider Dots
     const createDots = function() {
         dotContainer.innerHTML = '';
@@ -152,7 +180,7 @@ const slider = function() {
         }   
     });
 }
-slider();
+sliderController();
 
 // Modal
 const modalController = function() {
