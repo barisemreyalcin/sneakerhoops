@@ -3,10 +3,12 @@
 // VARIABLES
 const header = document.querySelector(".header");
 const banner = document.querySelector(".section--banner");
-const navLinks = document.querySelector(".nav__links");
-const navLink = document.querySelectorAll(".nav__link");
+const navLinksContainer = document.querySelector(".nav__links");
+const navLinks = document.querySelectorAll(".nav__link");
 const navLogo = document.querySelector(".nav__logo");
 const navTitle = document.querySelector(".header__title");
+const section1 = document.querySelector("#section--1");
+const btnScroll = document.querySelector(".banner__link--scroll-to");
 const btnOpenModal = document.querySelectorAll(".btn--show-modal");
 const btnCloseModal = document.querySelector(".modal__btn--close");
 const btnMobileOpen = document.querySelector(".btn-mobile--open");
@@ -34,16 +36,16 @@ const navController = function() {
             btnMobileOpen.classList.remove("btn-mobile--active");
             btnMobileClose.classList.add("btn-mobile--active");
             btnMobileClose.style.position = "fixed";
-            navLinks.classList.add(("nav__links--mobile"));
+            navLinksContainer.classList.add(("nav__links--mobile"));
         } else {
             btnMobileOpen.classList.add("btn-mobile--active");
             btnMobileClose.classList.remove("btn-mobile--active");
-            navLinks.classList.remove(("nav__links--mobile"));
+            navLinksContainer.classList.remove(("nav__links--mobile"));
         }
     }
     
-    navLink.forEach(link => {
-        link.addEventListener("click", function () { toggleNav(); });
+    navLinks.forEach(link => {
+        link.addEventListener("click", function () { isMobileWidth && toggleNav(); });
     });
     
     btnMobileOpen.addEventListener("click", toggleNav);
@@ -67,10 +69,27 @@ const hoverController = function() {
         }
     }
     
-    navLinks.addEventListener("mouseover", handleHover.bind(.4));
-    navLinks.addEventListener("mouseout", handleHover.bind(1));
+    navLinksContainer.addEventListener("mouseover", handleHover.bind(.4));
+    navLinksContainer.addEventListener("mouseout", handleHover.bind(1));
 }
 hoverController();
+
+// Smooth Scroll
+const smoothController = function() {
+    navLinksContainer.addEventListener("click", function(e) {
+        e.preventDefault();
+        if(e.target.classList.contains("nav__link")) {
+            const id = e.target.getAttribute("href");
+            document.querySelector(`${id}`).scrollIntoView({behavior: "smooth"});
+        }
+    })
+    
+    btnScroll.addEventListener("click", function(e) {
+        e.preventDefault();
+        section1.scrollIntoView({behavior: "smooth"});
+    })
+}
+smoothController();
 
 // Sticky Nav
 const stickyController = function() {
@@ -230,7 +249,6 @@ const tabController = function() {
     
         // Set active content
         const dataNum = clickedTab.dataset.tab;
-        console.log(dataNum);
         document.querySelector(`.brands__content--${dataNum}`).classList.add("brands__content--active");
     })
 }
